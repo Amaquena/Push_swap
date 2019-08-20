@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 15:30:55 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/16 13:54:01 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/08/19 14:27:50 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	swap_sa(int *stack_a)
 	int		temp;
 
 	temp = stack_a[0];
-	stack_a[0] = stack_b[1];
-	stack_a[temp];
+	stack_a[0] = stack_a[1];
+	stack_a[0] = temp;
 }
 
 void	swap_sb(int *stack_b)

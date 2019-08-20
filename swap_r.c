@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 15:29:19 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/13 16:05:18 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/08/19 14:26:32 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void	swap_rb(int *stack_b, int size)
 
 void	swap_rr(int *stack_a, int *stack_b)
 {
-	swap_ra(stack_a);
-	swap_rb(stack_b);
+	swap_ra(stack_a, 10);
+	swap_rb(stack_b, 10);
 }

@@ -6,19 +6,39 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:42:51 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/16 17:03:51 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/08/20 13:25:44 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-stack_a		*new_list(const int elem)
+void	push(t_stack **curr, const int elem)
 {
-	stack_a *new;
-
-	if (!(new = (stack_a *)malloc(sizeof(stack_a))))
-		return (NULL);
+	t_stack *new;
+	
+	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
+		return ;
 	new->elem = elem;
-	new->next = NULL;
-	return (new);
+	new->next = (*curr);
+	(*curr) = new;
+}
+
+void	pop(t_stack **curr)
+{
+	t_stack *pop;
+	pop = (*curr);
+	(*curr) = (*curr)->next;
+	free(pop);
+}
+
+void	disp_stack(t_stack **stacka)
+{
+	t_stack *temp;
+
+	temp = (*stacka);
+	while (temp)
+	{
+		ft_putnbr(temp->elem);
+		temp = temp->next;
+	}
 }
