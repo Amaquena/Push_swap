@@ -6,7 +6,7 @@
 /*   By: amaquena <amaquena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:15:52 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/23 12:34:52 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/08/23 15:37:54 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void		swap_ab(t_stack **stack_a, t_stack **stack_b);
 void		rotate(t_stack **stack);
 void		rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void		reverse(t_stack **stack);
+void		reverse_ab(t_stack **stack_a, t_stack **stack_b);
 #endif

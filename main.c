@@ -1,7 +1,16 @@
 #include "push_swap.h"
 
-int main(int ac,char **av)
+int main()
 {
+	char *line;
+
+	while (get_next_line(0, &line))
+	{
+		ft_putstr(line);
+		ft_putchar('\n');
+	}
+
+	/*
 	t_stack *stack_a;
 	t_stack *stack_b = NULL;
 	int j;
@@ -11,9 +20,9 @@ int main(int ac,char **av)
 		j = ac - 1;
 		while (j > 0)
 			push(&stack_a, ft_atoi(av[j--]));
-//		j = ac - 1;
-//		while (j > 0)
-//			push (&stack_b, ft_atoi(av[j--]));
+		j = ac - 1;
+		while (j > 0)
+			push (&stack_b, ft_atoi(av[j--]));
 		ft_putstr("stack a: ");
 		disp_stack(stack_a);
 		ft_putstr("\t\tstack b: ");
@@ -27,5 +36,6 @@ int main(int ac,char **av)
 		disp_stack(stack_b);
 		ft_putchar('\n');
 	}
+		*/
 	return (0);
 }

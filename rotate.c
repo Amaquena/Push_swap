@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 15:29:19 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/23 10:16:17 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/08/23 14:53:19 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	rotate(t_stack **stack)
 	temp->next = NULL;
 }
 
-void	ratate_ab(t_stack **stack_a, t_stack **stack_b)
+void	rotate_ab(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);

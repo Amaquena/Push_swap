@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:42:51 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/23 13:03:53 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/08/23 15:52:40 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	disp_stack(t_stack *stack)
 			temp = temp->next;
 		}
 	}
+	ft_putchar('\n');
 }
 
 void	push_a(t_stack **stack_a, t_stack **stack_b)
