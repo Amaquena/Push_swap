@@ -6,12 +6,12 @@
 #    By: amaquena <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/19 12:39:12 by amaquena          #+#    #+#              #
-#    Updated: 2019/08/20 16:34:12 by amaquena         ###   ########.fr        #
+#    Updated: 2019/08/23 11:56:52 by amaquena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap.a
-CFILES = swap*.c list.c
+CFILES = swap.c list.c rotate.c reverse.c
 OFILES = $(CFILES:.c=.o)
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
@@ -27,18 +27,19 @@ lftre:
 	$(MAKE) -C libft re
 
 $(NAME):
-	$(CC) -c $(FLAGS) $(CFILES)
-	ar rcs $(NAME) $(OFILES)
-	ranlib $(NAME)
+	@$(CC) -c $(FLAGS) $(CFILES)
+	@ar rcs $(NAME) $(OFILES)
+	@ranlib $(NAME)
 
 all: $(NAME)
 clean:
-	rm -f $(OFILES)
+	@rm -f $(OFILES)
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f a.out
+	@rm -f $(NAME)
+	@rm -f a.out
 re: fclean all
-
+	@echo "\t\t---COMPLETED---\n"
 gcc: re
 	$(CC) $(FLAGS) main.c $(CFILES) $(LIBFT)
+	@echo "______________________________________________________________________\n"

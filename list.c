@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:42:51 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/22 16:51:52 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/08/23 13:03:53 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,48 @@ void	push(t_stack **curr, const int elem)
 void	pop(t_stack **curr)
 {
 	t_stack *pop;
+
 	pop = (*curr);
 	(*curr) = (*curr)->next;
 	free(pop);
 }
 
-void	disp_stack(t_stack **stacka)
+void	disp_stack(t_stack *stack)
 {
 	t_stack *temp;
 
-	temp = (*stacka);
-	while (temp)
+	if (stack)
 	{
-		ft_putnbr(temp->elem);
-		temp = temp->next;
+		temp = stack;
+		while (temp)
+		{
+			ft_putnbr(temp->elem);
+			temp = temp->next;
+		}
+	}
+}
+
+void	push_a(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack *temp;
+	if ((*stack_b))
+	{
+		temp = (*stack_b);
+		(*stack_b) = (*stack_b)->next;
+		temp->next = (*stack_a);
+		(*stack_a) = temp;
+	}
+}
+
+void	push_b(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack *temp;
+
+	if ((*stack_a))
+	{
+		temp = (*stack_a);
+		(*stack_a) = (*stack_a)->next;
+		temp->next = (*stack_b);
+		(*stack_b) = temp;
 	}
 }
