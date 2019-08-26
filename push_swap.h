@@ -6,7 +6,7 @@
 /*   By: amaquena <amaquena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:15:52 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/23 15:37:54 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/08/26 17:50:59 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ typedef struct			s_stack
 **	linked list for stack a
 */
 
-void		push(t_stack **curr, const int elem);
+void		push(t_stack **curr, const char *elem);
 void		pop(t_stack **curr);
-void		disp_stack(t_stack *stack);
+void		disp_stack(t_stack *a, t_stack *b);
 void		push_a(t_stack **stack_a, t_stack **stack_b);
 void		push_b(t_stack **stack_a, t_stack **stack_b);
 /*
@@ -41,4 +41,12 @@ void		rotate(t_stack **stack);
 void		rotate_ab(t_stack **stack_a, t_stack **stack_b);
 void		reverse(t_stack **stack);
 void		reverse_ab(t_stack **stack_a, t_stack **stack_b);
+
+/*
+** Util
+*/
+
+int			is_sorted(t_stack *a, t_stack *b);
+void		dup_checker(t_stack *stack, int value);
+void		digit_checker(const char *argv);
 #endif
