@@ -6,21 +6,24 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:42:51 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/23 15:52:40 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/08/26 17:57:57 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack **curr, const int elem)
+void	push(t_stack **curr, const char *elem)
 {
 	t_stack *new;
-	
+
+	digit_checker(elem);
+
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
 		return ;
-	new->elem = elem;
+	new->elem = ft_atoi(elem);
 	new->next = (*curr);
 	(*curr) = new;
+	dup_checker((*curr), ft_atoi(elem));
 }
 
 void	pop(t_stack **curr)
@@ -32,25 +35,37 @@ void	pop(t_stack **curr)
 	free(pop);
 }
 
-void	disp_stack(t_stack *stack)
+void	disp_stack(t_stack *a, t_stack *b)
 {
-	t_stack *temp;
-
-	if (stack)
+	system("clear");
+	ft_putstr("Stack A:\n");
+	if (a)
 	{
-		temp = stack;
-		while (temp)
+		while (a)
 		{
-			ft_putnbr(temp->elem);
-			temp = temp->next;
+			ft_putnbr(a->elem);
+			ft_putchar(' ');
+			a = a->next;
+		}
+	}
+	ft_putstr("\nStack B:\n");
+	if (b)
+	{
+		while (b)
+		{
+			ft_putnbr(b->elem);
+			ft_putchar(' ');
+			b = b->next;
 		}
 	}
 	ft_putchar('\n');
+	ft_putstr("action: ");
 }
 
 void	push_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *temp;
+
 	if ((*stack_b))
 	{
 		temp = (*stack_b);
