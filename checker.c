@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 14:27:06 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/26 17:27:57 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/08/27 16:01:09 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ static void		rev_rot(char *line, t_stack **a, t_stack **b)
 		reverse(b);
 	else if (ft_strncmp(line, "rrr", 3) == 0)
 		reverse_ab(a, b);
+	else
+		error_msg();
+	disp_stack((*a), (*b));
+	is_sorted((*a), (*b));
 }
 
 static void		actions(char *line, t_stack **a, t_stack **b)
@@ -40,36 +44,33 @@ static void		actions(char *line, t_stack **a, t_stack **b)
 		rotate(b);
 	else if (ft_strncmp(line, "rr", 2) == 0)
 		rotate_ab(a, b);
-	else if (ft_strncmp(line, "rrr", 2) == 0)
-		rotate_ab(a, b);
-	else if (ft_strncmp(line, "rr", 2) == 0)
-		rotate_ab(a, b);
-	else if (ft_strncmp(line, "rr", 2) == 0)
-		rotate_ab(a, b);
+	else
+		error_msg();
+	disp_stack((*a), (*b));
+	is_sorted((*a), (*b));
 }
 
 int 		main(int ac, char **av)
 {
 	t_stack *stack_a;
 	t_stack *stack_b;
-	int j;
 	char *line;
 
 	if (ac > 1)
 	{
-		j = ac - 1;
+		ac--;
 		stack_b = NULL;
-		while (j > 0)
-			push(&stack_a, av[j--]);
+		while (ac > 0)
+			push(&stack_a, av[ac--]);
 		disp_stack(stack_a, stack_b);
+		is_sorted(stack_a, stack_b);
 		while (get_next_line(0, &line))
-		{
 			if (ft_strlen(line) == 2)
 				actions(line, &stack_a, &stack_b);
 			else if (ft_strlen(line) == 3)
 				rev_rot(line, &stack_a, &stack_b);
-			disp_stack(stack_a, stack_b);
-		}
+			else
+				error_msg();
 	}
 	else if (ac == 1)
 		return (0);
