@@ -6,13 +6,13 @@
 /*   By: amaquena <amaquena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:15:52 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/27 15:03:26 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/08/30 15:11:32 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
+# define MOVES 0
 # include "libft/libft.h"
 
 typedef struct			s_stack
@@ -50,4 +50,11 @@ void		is_sorted(t_stack *a, t_stack *b);
 void		dup_checker(t_stack *stack, int value);
 void		digit_checker(const char *argv);
 void		error_msg(void);
+
+/*
+** Algorithms
+*/
+
+void		sort2(int moves, t_stack **a, t_stack **b);
+void		check_args(int moves, int total, t_stack **a, t_stack **b);
 #endif
