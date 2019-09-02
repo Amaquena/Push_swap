@@ -6,14 +6,14 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 14:27:06 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/30 15:10:47 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/09/02 16:39:50 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static void		rev_rot(char *line, t_stack **a, t_stack **b)
-{
+
 	if (ft_strncmp(line, "rra", 3) == 0)
 		reverse(a);
 	else if (ft_strncmp(line, "rrb", 3) == 0)
@@ -22,7 +22,6 @@ static void		rev_rot(char *line, t_stack **a, t_stack **b)
 		reverse_ab(a, b);
 	else
 		error_msg();
-	MOVES++;
 	disp_stack((*a), (*b));
 	is_sorted((*a), (*b));
 }
@@ -47,7 +46,6 @@ static void		actions(char *line, t_stack **a, t_stack **b)
 		rotate_ab(a, b);
 	else
 		error_msg();
-	MOVES++;
 	disp_stack((*a), (*b));
 	is_sorted((*a), (*b));
 }
