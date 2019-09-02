@@ -6,13 +6,13 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 14:53:11 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/27 15:03:12 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/09/02 16:52:36 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		is_sorted(t_stack *a, t_stack *b)
+int			is_sorted(t_stack *a, t_stack *b)
 {
 	if (!b)
 	{
@@ -29,6 +29,7 @@ void		is_sorted(t_stack *a, t_stack *b)
 			exit(0);
 		}
 	}
+	return (0);
 }
 
 void		dup_checker(t_stack *stack, int value)

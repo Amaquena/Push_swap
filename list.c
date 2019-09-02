@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 16:42:51 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/30 15:11:09 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/09/02 16:36:02 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ void	pop(t_stack **curr)
 void	disp_stack(t_stack *a, t_stack *b)
 {
 //	system("clear");
-	ft_putstr("Stack A:\t\tmoves: ");
-	ft_putnbr(MOVES);
-	ft_putchar('\n');
+	ft_putstr("Stack A:\n");
 	if (a)
 	{
 		while (a)
