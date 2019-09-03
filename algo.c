@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 10:35:17 by amaquena          #+#    #+#             */
-/*   Updated: 2019/09/02 16:51:49 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/09/03 12:55:39 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ void	sort3(t_stack **a, t_stack **b)
 	while (!(is_sorted((*a), (*b))))
 	{
 		if ((*a)->elem < (*a)->next->elem)
+			reverse(a);
+		else
+		{
 			swap(a);
-		rotate(a);
+		}
 		disp_stack((*a), (*b));
 	}
 }
