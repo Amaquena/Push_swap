@@ -6,15 +6,14 @@
 #    By: amaquena <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/19 12:39:12 by amaquena          #+#    #+#              #
-#    Updated: 2019/08/30 14:44:39 by amaquena         ###   ########.fr        #
+#    Updated: 2019/09/03 12:54:32 by amaquena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap.a
 CHCK = checker
 PUSH = push_swap
-CFILES = swap.c list.c rotate.c reverse.c sorter.c
-PS_CFILES = algo.c
+CFILES = swap.c list.c rotate.c reverse.c sorter.c algo.c
 OFILES = $(CFILES:.c=.o)
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
@@ -32,7 +31,6 @@ lftre:
 $(NAME):
 	@$(CC) -c $(FLAGS) $(CFILES)
 	@ar rcs $(NAME) $(OFILES)
-	@ranlib $(NAME)
 
 all: $(NAME) $(CHCK) $(PUSH)
 clean:
@@ -44,11 +42,11 @@ fclean: clean
 	@rm -f $(PUSH)
 re: fclean all
 	@echo "\t\t---COMPLETED---\n"
-$(CHCK): fclean
-	$(CC) $(FLAGS) $(CHCK).c $(CFILES) $(LIBFT) -o $(CHCK)
+$(CHCK): fclean $(NAME)
+	$(CC) $(FLAGS) $(CHCK).c $(NAME) $(LIBFT) -o $(CHCK)
 	@echo "______________________________________________________________________\n"
-$(PUSH): fclean
-	$(CC) $(FLAGS) $(PUSH).c $(CFILES) $(PS_CFILES) $(LIBFT) -o $(PUSH)
+$(PUSH): fclean $(NAME)
+	$(CC) $(FLAGS) $(PUSH).c $(NAME) $(LIBFT) -o $(PUSH)
 	@echo "______________________________________________________________________\n"
 dgcc: re
 	$(CC) -g $(FLAGS) checker.c $(CFILES) $(LIBFT) -o checker
