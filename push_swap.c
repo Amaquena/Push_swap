@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 10:12:22 by amaquena          #+#    #+#             */
-/*   Updated: 2019/09/02 16:49:57 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/09/04 16:18:01 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	check_args(int total, t_stack **a, t_stack **b)
 		sort2(a, b);
 	else if (total == 3)
 		sort3(a, b);
+	else if (total == 4)
+		sort4(a, b);
 }
 
 int		main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: amaquena <amaquena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:15:52 by amaquena          #+#    #+#             */
-/*   Updated: 2019/09/02 16:50:42 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/09/04 16:20:04 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void		error_msg(void);
 
 void		sort2(t_stack **a, t_stack **b);
 void		sort3(t_stack **a, t_stack **b);
+void		sort4(t_stack **a, t_stack **b);
 void		check_args(int total, t_stack **a, t_stack **b);
 #endif
