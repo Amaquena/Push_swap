@@ -6,7 +6,7 @@
 #    By: amaquena <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/19 12:39:12 by amaquena          #+#    #+#              #
-#    Updated: 2019/09/03 12:54:32 by amaquena         ###   ########.fr        #
+#    Updated: 2019/09/12 09:48:11 by amaquena         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,10 @@ fclean: clean
 	@rm -f $(PUSH)
 re: fclean all
 	@echo "\t\t---COMPLETED---\n"
-$(CHCK): fclean $(NAME)
+$(CHCK):  $(NAME)
 	$(CC) $(FLAGS) $(CHCK).c $(NAME) $(LIBFT) -o $(CHCK)
 	@echo "______________________________________________________________________\n"
-$(PUSH): fclean $(NAME)
+$(PUSH):  $(NAME)
 	$(CC) $(FLAGS) $(PUSH).c $(NAME) $(LIBFT) -o $(PUSH)
 	@echo "______________________________________________________________________\n"
 dgcc: re

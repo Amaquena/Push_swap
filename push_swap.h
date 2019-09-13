@@ -6,7 +6,7 @@
 /*   By: amaquena <amaquena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:15:52 by amaquena          #+#    #+#             */
-/*   Updated: 2019/09/04 16:20:04 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/09/13 09:15:00 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 typedef struct			s_stack
 {
 	int					elem;
+	int					index;
 	struct s_stack		*next;
 }						t_stack;
 
 /*
-**	linked list for stack a
+**	manipulate list
 */
 
 void		push(t_stack **curr, const char *elem);
@@ -29,6 +30,7 @@ void		pop(t_stack **curr);
 void		disp_stack(t_stack *a, t_stack *b);
 void		push_a(t_stack **stack_a, t_stack **stack_b);
 void		push_b(t_stack **stack_a, t_stack **stack_b);
+void		normalizer(t_stack **a);
 /*
 **	swap actions
 */

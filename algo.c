@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 10:35:17 by amaquena          #+#    #+#             */
-/*   Updated: 2019/09/04 17:00:37 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/09/09 16:36:36 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	sort4(t_stack **a, t_stack **b)
 	t_stack *temp;
 	t_stack *curr;
 
-	curr = (*a);
-	temp = (*a);
 	while (!(is_sorted((*a), (*b))))
 	{
+		curr = (*a);
+		temp = (*a);
 		while (curr)
 		{
 			if (temp->elem > curr->elem)
