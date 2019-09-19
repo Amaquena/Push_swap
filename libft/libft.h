@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/21 12:24:43 by amaquena          #+#    #+#             */
-/*   Updated: 2019/08/16 17:09:22 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/09/19 11:45:15 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_isspace(char c);
 int					ft_numlen(int c);
 int					get_next_line(const int fd, char **line);
+void				ft_swapany(void *a, void *b, size_t s);
 
 #endif
