@@ -6,7 +6,7 @@
 /*   By: amaquena <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 14:27:06 by amaquena          #+#    #+#             */
-/*   Updated: 2019/09/13 09:15:36 by amaquena         ###   ########.fr       */
+/*   Updated: 2019/09/20 13:36:23 by amaquena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int 		main(int ac, char **av)
 		stack_b = NULL;
 		while (ac > 0)
 			push(&stack_a, av[ac--]);
-		disp_stack(stack_a, stack_b);
 		normalizer(&stack_a);
 		disp_stack(stack_a, stack_b);
 		is_sorted(stack_a, stack_b);
