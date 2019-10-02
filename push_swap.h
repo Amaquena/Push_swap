@@ -13,6 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft/libft.h"
+#include <stdio.h>
 
 typedef struct			s_stack
 {
@@ -51,13 +52,17 @@ int			is_sorted(t_stack *a, t_stack *b);
 void		dup_checker(t_stack *stack, int value);
 void		digit_checker(const char *argv);
 void		error_msg(void);
+int			stack_size(t_stack *a);
 
 /*
 ** Algorithms
 */
 
 void		sort2(t_stack **a, t_stack **b);
-void		sort3(t_stack **a, t_stack **b);
+void		sort3(t_stack **a);
 void		sort4(t_stack **a, t_stack **b);
-void		check_args(int total, t_stack **a, t_stack **b);
+void	check_args(t_stack **a, t_stack **b);
+int			find_largest(t_stack *a);
+int			find_smallest(t_stack *a);
+
 #endif

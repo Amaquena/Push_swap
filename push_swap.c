@@ -12,12 +12,15 @@
 
 #include "push_swap.h"
 
-void	check_args(int total, t_stack **a, t_stack **b)
+void	check_args(t_stack **a, t_stack **b)
 {
+	int total;
+
+	total = stack_size((*a));
 	if (total == 2)
 		sort2(a, b);
 	else if (total == 3)
-		sort3(a, b);
+		sort3(a);
 	else if (total == 4)
 		sort4(a, b);
 }
@@ -26,17 +29,19 @@ int		main(int ac, char **av)
 {
 	t_stack *stack_a;
 	t_stack *stack_b;
-	int total;
 
 	if (ac > 1)
 	{
 		ac--;
-		total = ac;
 		stack_b = NULL;
 		while (ac > 0)
 			push(&stack_a, av[ac--]);
+		normalizer(&stack_a);
 		disp_stack(stack_a, stack_b);
-		check_args(total, &stack_a, &stack_b);
+		ft_putstr("\n--------------------------------\n");
+		check_args(&stack_a, &stack_b);
+		ft_putstr("---------------------------------\n\n");
+		disp_stack(stack_a, stack_b);
 		is_sorted(stack_a, stack_b);
 	}
 	return (0);

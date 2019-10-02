@@ -20,8 +20,30 @@ void	sort2(t_stack **a, t_stack **b)
 		disp_stack((*a), (*b));
 }
 
-void	sort3(t_stack **a, t_stack **b)
+void	sort3(t_stack **a)
 {
+	int p1 = (*a)->elem;
+	int p2 = (*a)->next->elem;
+	int p3 = (*a)->next->next->elem;
+	
+	if (p1 > p2 && p1 > p3 && p3 < p2)
+	{
+		swap(a);
+		reverse(a);
+	}
+	else if (p1 < p2 && p2 > p3 && p3 > p1)
+	{
+		swap(a);
+		rotate(a);
+	}
+	else if (p1 > p2 && p1 < p3 && p3 > p2)
+		swap(a);
+	else if (p1 > p3 && p3 > p2 && p1 > p2)
+		rotate(a);
+	else if (p3 < p1 && p3 < p2 && p1 < 2)
+		reverse(a);
+}
+/*
 	while (!(is_sorted((*a), (*b))))
 	{
 		if ((*a)->elem < (*a)->next->elem)
@@ -30,41 +52,25 @@ void	sort3(t_stack **a, t_stack **b)
 			swap(a);
 		disp_stack((*a), (*b));
 	}
+	
 }
+*/
 
 void	sort4(t_stack **a, t_stack **b)
 {
-	t_stack *temp;
-	t_stack *curr;
+	int size;
+	int pos;
 
-	while (!(is_sorted((*a), (*b))))
+	size = stack_size((*a));
+	pos = find_smallest((*a));
+	if (pos > size / 2)
 	{
-		curr = (*a);
-		temp = (*a);
-		while (curr)
-		{
-			if (temp->elem > curr->elem)
-				temp = curr;
-			curr = curr->next;
-		}
-		curr = (*a);
-		while (curr)
-		{
-			if (curr->elem != temp->elem)
-			{
-				rotate(a);
-				disp_stack((*a), (*b));
-			}
-			else 
-			{
-				push_b(a, b);
-				disp_stack((*a), (*b));
-
-			}
-			curr = curr->next;
-		}
-		sort3(a, b);
-		push_a(a, b);
-		disp_stack((*a), (*b));
+		while ((*a)->index != pos)
+			reverse(a);
+		push_b(a, b);
+		pos--;
 	}
+	disp_stack((*a), (*b));
+	sort3(a);
+	push_a(a, b);
 }

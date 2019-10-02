@@ -12,6 +12,19 @@
 
 #include "push_swap.h"
 
+int			stack_size(t_stack *a)
+{
+	int size;
+
+	size = 0;
+	while (a)
+	{
+		size++;
+		a = a->next;
+	}
+	return (size);
+}
+
 int			is_sorted(t_stack *a, t_stack *b)
 {
 	if (!b)
