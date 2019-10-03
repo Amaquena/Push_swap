@@ -12,6 +12,24 @@
 
 #include "push_swap.h"
 
+void	ra_or_rra(t_stack **a, t_stack **b, int pos, int size)
+{
+	if (pos >= size / 2)
+	{
+		pos = size - pos;
+		while (pos != 0)
+		{
+			reverse(a, b, 1);
+			pos--;
+		}
+	}
+	else if (pos < size / 2)
+	{
+		rotate(a, b, 1);
+		pos--;
+	}
+}
+
 int find_largest(t_stack *a)
 {
 	int pos;
@@ -29,13 +47,11 @@ int find_largest(t_stack *a)
 	return (pos);
 }
 
-int find_smallest(t_stack *a)
+int find_smallest(t_stack *a, int smallest)
 {
 	int pos;
-	int smallest;
 
-	pos = 1;
-	smallest = 1;
+	pos = 0;
 	while (a)
 	{
 		if (a->index == smallest)

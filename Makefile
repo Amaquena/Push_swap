@@ -55,4 +55,4 @@ pgcc: re
 	$(CC) -g $(FLAGS) push_swap.c $(CFILES) $(LIBFT) -o push_swap
 	@echo "______________________________________________________________________\n"
 run: fclean $(PUSH)
-	./push_swap 5 4 3 1
+	./push_swap 4 3 5 1 2
