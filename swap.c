@@ -12,22 +12,34 @@
 
 #include "push_swap.h"
 
-void	swap(t_stack **stack)
+void	swap(t_stack **a, t_stack **b, int action)
 {
 	t_stack *temp;
 
-	if ((*stack) && (*stack)->next)
+	if ((*a) && (*a)->next)
 	{
-		temp = (*stack);
-		(*stack) = (*stack)->next;
-		temp->next = (*stack)->next;
-		(*stack)->next = temp;
+		temp = (*a);
+		(*a) = (*a)->next;
+		temp->next = (*a)->next;
+		(*a)->next = temp;
 	}
-//		ft_swapany(&(*stack)->elem, &(*stack)->next->elem, sizeof(int));
+	if (action == 1)
+		ft_putendl("sa");
+	else if (action == 2)
+		ft_putendl("sb");
+	is_sorted((*a), (*b));
 }
 
-void	swap_ab(t_stack **stack_a, t_stack **stack_b)
+void	swap_ab(t_stack **a, t_stack **b, int action)
 {
-	swap(stack_a);
-	swap(stack_b);
+	if (action == 3)
+	{
+		swap(a, b, 3);
+		swap(a, b, 3);
+	}
+	else if (action == 1 || action == 2)
+	{
+		swap(a, b, 1);
+		swap(a, b, 2);
+	}
 }

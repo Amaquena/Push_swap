@@ -81,7 +81,7 @@ void	disp_stack(t_stack *a, t_stack *b)
 	moves++;
 }
 
-void	push_a(t_stack **stack_a, t_stack **stack_b)
+void	push_a(t_stack **stack_a, t_stack **stack_b, int action)
 {
 	t_stack *temp;
 
@@ -92,9 +92,11 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 		temp->next = (*stack_a);
 		(*stack_a) = temp;
 	}
+	if (action != 3)
+		ft_putendl("pa");
 }
 
-void	push_b(t_stack **stack_a, t_stack **stack_b)
+void	push_b(t_stack **stack_a, t_stack **stack_b, int action)
 {
 	t_stack *temp;
 
@@ -105,4 +107,6 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 		temp->next = (*stack_b);
 		(*stack_b) = temp;
 	}
+	if (action != 3)
+		ft_putendl("pb");
 }

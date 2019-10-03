@@ -15,14 +15,13 @@
 static void		rev_rot(char *line, t_stack **a, t_stack **b)
 {
 	if (ft_strncmp(line, "rra", 3) == 0)
-		reverse(a);
+		reverse(a, b, 3);
 	else if (ft_strncmp(line, "rrb", 3) == 0)
-		reverse(b);
+		reverse(a, b, 3);
 	else if (ft_strncmp(line, "rrr", 3) == 0)
-		reverse_ab(a, b);
+		reverse_ab(a, b, 3);
 	else
 		error_msg();
-	disp_stack((*a), (*b));
 	if (!(is_sorted((*a), (*b))))
 		return ;
 }
@@ -30,24 +29,23 @@ static void		rev_rot(char *line, t_stack **a, t_stack **b)
 static void		actions(char *line, t_stack **a, t_stack **b)
 {
 	if (ft_strncmp(line, "sa", 2) == 0)
-		swap(a);
+		swap(a, b, 3);
 	else if (ft_strncmp(line, "sb", 2) == 0)
-		swap(b);
+		swap(a, b, 3);
 	else if (ft_strncmp(line, "ss", 2) == 0)
-		swap_ab(a, b);
+		swap_ab(a, b, 3);
 	else if (ft_strncmp(line, "pa", 2) == 0)
-		push_a(a, b);
+		push_a(a, b, 3);
 	else if (ft_strncmp(line, "pb", 2) == 0)
-		push_b(a, b);
+		push_b(a, b, 3);
 	else if (ft_strncmp(line, "ra", 2) == 0)
-		rotate(a);
+		rotate(a, b, 3);
 	else if (ft_strncmp(line, "rb", 2) == 0)
-		rotate(b);
+		rotate(a, b, 3);
 	else if (ft_strncmp(line, "rr", 2) == 0)
-		rotate_ab(a, b);
+		rotate_ab(a, b, 3);
 	else
 		error_msg();
-	disp_stack((*a), (*b));
 	if (!(is_sorted((*a), (*b))))
 		return ;
 }
@@ -65,7 +63,6 @@ int 		main(int ac, char **av)
 		while (ac > 0)
 			push(&stack_a, av[ac--]);
 		normalizer(&stack_a);
-		disp_stack(stack_a, stack_b);
 		is_sorted(stack_a, stack_b);
 		while (get_next_line(0, &line))
 			if (ft_strlen(line) == 2)

@@ -12,25 +12,38 @@
 
 #include "push_swap.h"
 
-void	rotate(t_stack **stack)
+void	rotate(t_stack **a, t_stack **b, int action)
 {
 	t_stack *temp;
 	t_stack *curr;
 
-	if ((*stack) && (*stack)->next)
+	if ((*a) && (*a)->next)
 	{
-		curr = (*stack);
-		temp = (*stack);
+		curr = (*a);
+		temp = (*a);
 		while (curr->next)
 			curr = curr->next;
-		(*stack) = (*stack)->next;
+		(*a) = (*a)->next;
 		curr->next = temp;
 		temp->next = NULL;
 	}
+	if (action == 1)
+		ft_putendl("ra");
+	else if (action == 2)
+		ft_putendl("rb");
+	is_sorted((*a), (*b));
 }
 
-void	rotate_ab(t_stack **stack_a, t_stack **stack_b)
+void	rotate_ab(t_stack **a, t_stack **b, int action)
 {
-	rotate(stack_a);
-	rotate(stack_b);
+	if (action == 3)
+	{
+		rotate(a, b, 3);
+		rotate(a, b,3);
+	}
+	else if (action == 1 || action == 2)
+	{
+			rotate(a, b, 1);
+			rotate(a, b, 2);
+	}
 }

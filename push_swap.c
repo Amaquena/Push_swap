@@ -20,8 +20,8 @@ void	check_args(t_stack **a, t_stack **b)
 	if (total == 2)
 		sort2(a, b);
 	else if (total == 3)
-		sort3(a);
-	else if (total == 4)
+		sort3(a, b);
+	else if (total == 4 || total == 5)
 		sort4(a, b);
 }
 
@@ -37,11 +37,7 @@ int		main(int ac, char **av)
 		while (ac > 0)
 			push(&stack_a, av[ac--]);
 		normalizer(&stack_a);
-		disp_stack(stack_a, stack_b);
-		ft_putstr("\n--------------------------------\n");
 		check_args(&stack_a, &stack_b);
-		ft_putstr("---------------------------------\n\n");
-		disp_stack(stack_a, stack_b);
 		is_sorted(stack_a, stack_b);
 	}
 	return (0);

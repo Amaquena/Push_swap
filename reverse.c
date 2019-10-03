@@ -12,25 +12,38 @@
 
 #include "push_swap.h"
 
-void	reverse(t_stack **stack)
+void	reverse(t_stack **a, t_stack **b, int action)
 {
 	t_stack *temp;
 	t_stack *curr;
 
-	if ((*stack) && (*stack)->next)
+	if ((*a) && (*a)->next)
 	{
-		curr = (*stack);
+		curr = (*a);
 		while (curr->next->next)
 			curr = curr->next;
 		temp = curr->next;
 		curr->next = NULL;
-		temp->next = (*stack);
-		(*stack) = temp;
+		temp->next = (*a);
+		(*a) = temp;
 	}
+	if (action == 1)
+		ft_putendl("rra");
+	else if (action == 2)
+		ft_putendl("rrb");
+	is_sorted((*a), (*b));
 }
 
-void	reverse_ab(t_stack **stack_a, t_stack **stack_b)
+void	reverse_ab(t_stack **a, t_stack **b, int action)
 {
-	reverse(stack_a);
-	reverse(stack_b);
+	if (action == 3)
+	{
+		reverse(a, b, 3);
+		reverse(a, b, 3);
+	}
+	else if (action == 1 || action == 2)
+	{
+		reverse(a, b, 1);
+		reverse(a, b, 2);
+	}
 }
