@@ -38,6 +38,7 @@ int		main(int ac, char **av)
 		while (ac > 0)
 			push(&stack_a, av[ac--]);
 		normalizer(&stack_a);
+		disp_stack(stack_a, stack_b);
 		check_args(&stack_a, &stack_b);
 		is_sorted(&stack_a, &stack_b, 2);
 	}

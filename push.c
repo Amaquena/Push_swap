@@ -46,4 +46,5 @@ void	push_ab(t_stack **a, t_stack **b, int action, int picker)
 		push_b(a, b);
 		displayAction(2, picker);
 	}
+	disp_stack((*a), (*b));
 }

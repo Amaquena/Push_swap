@@ -58,4 +58,5 @@ void	rotate_ab(t_stack **a, t_stack **b, int action, int picker)
 		rotate(b);
 		displayAction(3, picker);
 	}
+	disp_stack((*a), (*b));
 }

@@ -72,28 +72,24 @@ void normalizer(t_stack **a)
 
 void disp_stack(t_stack *a, t_stack *b)
 {
-	static int moves = 0;
+	static int moves = -1;
 
-	ft_putstr("Stack A:\t moves: ");
-	ft_putnbr(moves);
-	ft_putchar('\n');
-	while (a)
-	{
-		ft_putnbr(a->elem);
-		ft_putstr("(");
-		ft_putnbr(a->index);
-		ft_putstr(") ");
-		a = a->next;
-	}
-	ft_putstr("\nStack B:\n");
-	while (b)
-	{
-		ft_putnbr(b->elem);
-		ft_putstr("(");
-		ft_putnbr(b->index);
-		ft_putstr(") ");
-		b = b->next;
-	}
-	ft_putstr("\naction: \n");
+	ft_putstr("moves: ");
 	moves++;
+	ft_putnbr(moves);
+	ft_putstr("\nA       B\n");
+	while (a || b)
+	{
+		if (a)
+			ft_putstr(ft_itoa(a->elem));
+		ft_putstr("       ");
+		if (b)
+			ft_putstr(ft_itoa(b->elem));
+		ft_putchar('\n');
+		if (a)
+			a = a->next;
+		if (b)
+			b = b->next;
+	}
+	ft_putchar('\n');
 }
