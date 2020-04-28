@@ -12,18 +12,20 @@
 
 #include "push_swap.h"
 
-void	push(t_stack **curr, const char *elem)
+void push(t_stack **curr, const char *elem)
 {
-	t_stack			*new;
+	t_stack *new;
+	int value;
 
-	digit_checker(elem);
+	value = digit_checker(elem);
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
-		return ;
-	new->elem = ft_atoi(elem);
+		return;
+	new->elem = value;
 	new->next = (*curr);
 	new->index = 1; // remove when normalizer fixed
 	(*curr) = new;
-	dup_checker((*curr), ft_atoi(elem));
+	new = NULL;
+	dup_checker((*curr), value);
 }
 
 /*
@@ -37,7 +39,19 @@ void	push(t_stack **curr, const char *elem)
  **}
  */
 
-void	normalizer(t_stack **a)
+void pop(t_stack **curr)
+{
+	t_stack *pop;
+
+	while ((*curr))
+	{
+		pop = (*curr);
+		(*curr) = (*curr)->next;
+		free(pop);
+	}
+}
+
+void normalizer(t_stack **a)
 {
 	t_stack *curr;
 	t_stack *temp;
@@ -56,16 +70,18 @@ void	normalizer(t_stack **a)
 	}
 }
 
-void	disp_stack(t_stack *a, t_stack *b)
+void disp_stack(t_stack *a, t_stack *b)
 {
 	static int moves = 0;
 
-	ft_putstr(ft_strjoin("Stack A:\t moves: ", ft_itoa(moves)));
+	ft_putstr("Stack A:\t moves: ");
+	ft_putnbr(moves);
 	ft_putchar('\n');
 	while (a)
 	{
 		ft_putnbr(a->elem);
-		ft_putstr(ft_strjoin("(" , ft_itoa(a->index)));
+		ft_putstr("(");
+		ft_putnbr(a->index);
 		ft_putstr(") ");
 		a = a->next;
 	}
@@ -73,40 +89,11 @@ void	disp_stack(t_stack *a, t_stack *b)
 	while (b)
 	{
 		ft_putnbr(b->elem);
-		ft_putstr(ft_strjoin("(" , ft_itoa(b->index)));
+		ft_putstr("(");
+		ft_putnbr(b->index);
 		ft_putstr(") ");
 		b = b->next;
 	}
 	ft_putstr("\naction: \n");
 	moves++;
-}
-
-void	push_a(t_stack **stack_a, t_stack **stack_b, int action)
-{
-	t_stack *temp;
-
-	if ((*stack_b))
-	{
-		temp = (*stack_b);
-		(*stack_b) = (*stack_b)->next;
-		temp->next = (*stack_a);
-		(*stack_a) = temp;
-	}
-	if (action != 3)
-		ft_putendl("pa");
-}
-
-void	push_b(t_stack **stack_a, t_stack **stack_b, int action)
-{
-	t_stack *temp;
-
-	if ((*stack_a))
-	{
-		temp = (*stack_a);
-		(*stack_a) = (*stack_a)->next;
-		temp->next = (*stack_b);
-		(*stack_b) = temp;
-	}
-	if (action != 3)
-		ft_putendl("pb");
 }

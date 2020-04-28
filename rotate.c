@@ -12,38 +12,50 @@
 
 #include "push_swap.h"
 
-void	rotate(t_stack **a, t_stack **b, int action)
+static void	rotate(t_stack **stack)
 {
 	t_stack *temp;
 	t_stack *curr;
 
-	if ((*a) && (*a)->next)
+	if ((*stack) && (*stack)->next)
 	{
-		curr = (*a);
-		temp = (*a);
+		curr = (*stack);
+		temp = (*stack);
 		while (curr->next)
 			curr = curr->next;
-		(*a) = (*a)->next;
+		(*stack) = (*stack)->next;
 		curr->next = temp;
 		temp->next = NULL;
 	}
-	if (action == 1)
-		ft_putendl("ra");
-	else if (action == 2)
-		ft_putendl("rb");
-	is_sorted((*a), (*b));
+	// is_sorted(a, b);
 }
 
-void	rotate_ab(t_stack **a, t_stack **b, int action)
+static void	displayAction(int action, int picker)
 {
-	if (action == 3)
+	if (action == 1 && picker == 2)
+		ft_putendl("ra");
+	else if (action == 2 && picker == 2)
+		ft_putendl("rb");
+	else if (action == 3 && picker == 2)
+		ft_putendl("rr");
+}
+
+void	rotate_ab(t_stack **a, t_stack **b, int action, int picker)
+{
+	if (action == 1)
 	{
-		rotate(a, b, 3);
-		rotate(a, b,3);
+		rotate(a);
+		displayAction(1, picker);
 	}
-	else if (action == 1 || action == 2)
+	else if (action == 2)
 	{
-			rotate(a, b, 1);
-			rotate(a, b, 2);
+		rotate(b);
+		displayAction(2, picker);
+	}
+	else if (action == 3)
+	{
+		rotate(a);
+		rotate(b);
+		displayAction(3, picker);
 	}
 }

@@ -14,10 +14,8 @@
 
 void	sort2(t_stack **a, t_stack **b)
 {
-	is_sorted((*a), (*b));
 		if ((*a)->elem > (*a)->next->elem)
-			swap(a, b, 1);
-		disp_stack((*a), (*b));
+			swap_ab(a, b, 1, 2);
 }
 
 void	sort3(t_stack **a, t_stack **b)
@@ -28,20 +26,20 @@ void	sort3(t_stack **a, t_stack **b)
 	
 	if (p1 > p2 && p1 > p3 && p3 < p2)
 	{
-		swap(a, b, 1);
-		reverse(a, b, 1);
+		swap_ab(a, b, 1, 2);
+		reverse_ab(a, b, 1, 2);
 	}
 	else if (p1 < p2 && p2 > p3 && p3 > p1)
 	{
-		swap(a, b, 1);
-		rotate(a, b, 1);
+		swap_ab(a, b, 1, 2);
+		rotate_ab(a, b, 1, 2);
 	}
 	else if (p1 > p2 && p1 < p3 && p3 > p2)
-		swap(a, b, 1);
+		swap_ab(a, b, 1, 2);
 	else if (p1 > p3 && p3 > p2 && p1 > p2)
-		rotate(a, b, 1);
+		rotate_ab(a, b, 1, 2);
 	else if (p3 < p1 && p3 < p2 && p1 < 2)
-		reverse(a, b, 1);
+		reverse_ab(a, b, 1, 2);
 }
 
 void	sort4(t_stack **a, t_stack **b)
@@ -56,13 +54,13 @@ void	sort4(t_stack **a, t_stack **b)
 	{
 		pos = find_smallest((*a), (i + 1));
 		ra_or_rra(a, b, pos, size);
-		push_b(a, b, 1);
+		push_ab(a, b, 2, 2);
 		i++;
 	}
 	sort3(a, b);
 	while (i > 0)
 	{
-		push_a(a, b, 1);
+		push_ab(a, b, 1, 2);
 		i--;
 	}
 }

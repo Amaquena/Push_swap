@@ -29,29 +29,25 @@ typedef struct			s_stack
 void		push(t_stack **curr, const char *elem);
 void		pop(t_stack **curr);
 void		disp_stack(t_stack *a, t_stack *b);
-void		push_a(t_stack **stack_a, t_stack **stack_b, int action);
-void		push_b(t_stack **stack_a, t_stack **stack_b, int action);
 void		normalizer(t_stack **a);
+
 /*
 **	swap actions
 */
 
-
-void		swap(t_stack **a, t_stack **b, int action);
-void		swap_ab(t_stack **a, t_stack **b, int action);
-void		rotate(t_stack **a, t_stack **b, int action);
-void		rotate_ab(t_stack **a, t_stack **ab, int action);
-void		reverse(t_stack **a, t_stack **b, int action);
-void		reverse_ab(t_stack **a, t_stack **b, int action);
+void		swap_ab(t_stack **a, t_stack **b, int action, int picker);
+void		rotate_ab(t_stack **a, t_stack **b, int action, int picker);
+void		reverse_ab(t_stack **a, t_stack **b, int action, int picker);
+void		push_ab(t_stack **stack_a, t_stack **stack_b, int action, int picker);
 
 /*
 ** Util
 */
 
-int			is_sorted(t_stack *a, t_stack *b);
+int			is_sorted(t_stack **a, t_stack **b, int picker);
 void		dup_checker(t_stack *stack, int value);
-void		digit_checker(const char *argv);
-void		error_msg(void);
+int			digit_checker(const char *argv);
+void		print_msg(int msg);
 int			stack_size(t_stack *a);
 
 /*
@@ -61,9 +57,9 @@ int			stack_size(t_stack *a);
 void		sort2(t_stack **a, t_stack **b);
 void		sort3(t_stack **a, t_stack **b);
 void		sort4(t_stack **a, t_stack **b);
-void	check_args(t_stack **a, t_stack **b);
+void		check_args(t_stack **a, t_stack **b);
 int			find_largest(t_stack *a);
 int			find_smallest(t_stack *a, int smallest);
-void		ra_or_rra(t_stack **stack, t_stack **b, int pos, int size);
+void		ra_or_rra(t_stack **a, t_stack **b, int pos, int size);
 
 #endif

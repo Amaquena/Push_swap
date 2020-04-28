@@ -13,7 +13,7 @@
 NAME = push_swap.a
 CHCK = checker
 PUSH = push_swap
-CFILES = swap.c list.c rotate.c reverse.c sorter.c algo.c algo_assist.c
+CFILES = swap.c list.c rotate.c reverse.c push.c sorter.c algo.c algo_assist.c
 OFILES = $(CFILES:.c=.o)
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
@@ -56,3 +56,9 @@ pgcc: re
 	@echo "______________________________________________________________________\n"
 run: fclean $(PUSH)
 	./push_swap 4 3 5 1 2
+
+cmain:
+	rm -f main
+
+main: cmain
+	$(CC) $(FLAGS) main.c $(LIBFT) -o main

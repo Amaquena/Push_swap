@@ -3,9 +3,18 @@
 
 int main()
 {
-	char *num = "2147483648";
-	int i = -1;
+	int fd;
+	char *line;
+	int l;
 
-	printf("atoi: %s\n", ft_itoa(ft_atoi(num)));
+	fd = open("checker.c", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	while ((l = get_next_line(0, &line)) == 1)
+	{
+		printf("%s\n", line);
+		printf("gnl return: %d\n", l);
+		free(line);
+	}
 	return (0);
 }

@@ -12,34 +12,49 @@
 
 #include "push_swap.h"
 
-void	swap(t_stack **a, t_stack **b, int action)
+static void	swap(t_stack **stack)
 {
 	t_stack *temp;
 
-	if ((*a) && (*a)->next)
+	if ((*stack) && (*stack)->next)
 	{
-		temp = (*a);
-		(*a) = (*a)->next;
-		temp->next = (*a)->next;
-		(*a)->next = temp;
+		temp = (*stack);
+		(*stack) = (*stack)->next;
+		temp->next = (*stack)->next;
+		(*stack)->next = temp;
 	}
+	// is_sorted((*a), (*b));
+}
+
+static void	displayAction(int action)
+{
 	if (action == 1)
 		ft_putendl("sa");
 	else if (action == 2)
 		ft_putendl("sb");
-	is_sorted((*a), (*b));
+	else if (action == 3)
+		ft_putendl("ss");
 }
 
-void	swap_ab(t_stack **a, t_stack **b, int action)
+void	swap_ab(t_stack **a, t_stack **b, int action, int picker)
 {
-	if (action == 3)
+	if (action == 1)
 	{
-		swap(a, b, 3);
-		swap(a, b, 3);
+		swap(a);
+		if (picker == 2)
+			displayAction(1);
 	}
-	else if (action == 1 || action == 2)
+	else if (action == 2)
 	{
-		swap(a, b, 1);
-		swap(a, b, 2);
+		swap(b);
+		if (picker == 2)
+			displayAction(2);
+	}
+	else if (action == 3)
+	{
+		swap(a);
+		swap(b);
+		if (picker == 2)
+			displayAction(3);
 	}
 }

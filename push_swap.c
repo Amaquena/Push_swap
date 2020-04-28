@@ -34,11 +34,12 @@ int		main(int ac, char **av)
 	{
 		ac--;
 		stack_b = NULL;
+		stack_a = NULL;
 		while (ac > 0)
 			push(&stack_a, av[ac--]);
 		normalizer(&stack_a);
 		check_args(&stack_a, &stack_b);
-		is_sorted(stack_a, stack_b);
+		is_sorted(&stack_a, &stack_b, 2);
 	}
 	return (0);
 }

@@ -19,14 +19,21 @@ int			stack_size(t_stack *a)
 	size = 0;
 	while (a)
 	{
+		if (a != NULL) {
 		size++;
 		a = a->next;
+		}
 	}
 	return (size);
 }
 
-int			is_sorted(t_stack *a, t_stack *b)
+int			is_sorted(t_stack **stack_a, t_stack **stack_b, int picker)
 {
+	t_stack *a;
+	t_stack *b;
+
+	a = (*stack_a);
+	b = (*stack_b);
 	if (!b)
 	{
 		while (a->next)
@@ -38,11 +45,17 @@ int			is_sorted(t_stack *a, t_stack *b)
 		}
 		if (!(a->next))
 		{
-			ft_putstr("\x1b[32mOK!\n\x1b[0m");
-			exit(0);
+			pop(stack_a);
+			if (picker == 1)
+				print_msg(1);
+			exit(1);
 		}
 	}
-	return (0);
+	pop(stack_a);
+	pop(stack_b);
+	if (picker == 1)
+		print_msg(2);
+	exit(1);
 }
 
 void		dup_checker(t_stack *stack, int value)
@@ -55,30 +68,36 @@ void		dup_checker(t_stack *stack, int value)
 		if ((stack->elem == value) && (counter < 3))
 			counter++;
 		if (counter == 2)
-			error_msg();
+			print_msg(3);
 		stack = stack->next;
 	}
 }
 
-void		digit_checker(const char *argv)
+int			digit_checker(const char *argv)
 {
 	int i;
+	int value;
 
 	i = 0;
 	while (argv[i])
 	{
-		if (!(ft_isdigit(argv[i])) && (argv[i] != '-' && argv[i] != '+'))
-			error_msg();
+		if (!(ft_isdigit(argv[i])) && (argv[0] != '-' && argv[0] != '+'))
+			print_msg(3);
 		i++;
 	}
-//	ft_putstr("argv: ");
-//	ft_putnbr(ft_atoi(argv));
-	if (ft_atoi(argv) >= 2147483647 || ft_atoi(argv) <= -2147483648)
-		error_msg();
+	value = ft_atoi(argv);
+	if (value >= 2147483647 || value <= -2147483648)
+		print_msg(3);
+	return value;
 }
 
-void	error_msg(void)
+void	print_msg(int msg)
 {
+	if (msg == 1)
+		ft_putstr("\x1b[32mOK!\n\x1b[0m");
+	else if (msg == 2)
+		ft_putstr("\x1b[33mKO!\n\x1b[0m");
+	else if (msg == 3)
 		ft_putstr("\x1b[31mERROR!\n\x1b[0m");
-		exit(1);
+	exit(1);
 }

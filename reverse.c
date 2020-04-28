@@ -12,38 +12,50 @@
 
 #include "push_swap.h"
 
-void	reverse(t_stack **a, t_stack **b, int action)
+static void	reverse(t_stack **stack)
 {
 	t_stack *temp;
 	t_stack *curr;
 
-	if ((*a) && (*a)->next)
+	if ((*stack) && (*stack)->next)
 	{
-		curr = (*a);
+		curr = (*stack);
 		while (curr->next->next)
 			curr = curr->next;
 		temp = curr->next;
 		curr->next = NULL;
-		temp->next = (*a);
-		(*a) = temp;
+		temp->next = (*stack);
+		(*stack) = temp;
 	}
-	if (action == 1)
-		ft_putendl("rra");
-	else if (action == 2)
-		ft_putendl("rrb");
-	is_sorted((*a), (*b));
+	// is_sorted(a, b);
 }
 
-void	reverse_ab(t_stack **a, t_stack **b, int action)
+static void	displayAction(int action, int picker)
 {
+	if (action == 1 && picker == 2)
+		ft_putendl("rra");
+	else if (action == 2 && picker == 2)
+		ft_putendl("rrb");
+	else if (action == 3 && picker == 2)
+		ft_putendl("rrr");
+}
+
+void	reverse_ab(t_stack **a, t_stack **b, int action, int picker)
+{
+	if (action == 1)
+	{
+		reverse(a);
+		displayAction(1, picker);
+	}
+	else if (action == 2)
+	{
+		reverse(b);
+		displayAction(2, picker);
+	}
 	if (action == 3)
 	{
-		reverse(a, b, 3);
-		reverse(a, b, 3);
-	}
-	else if (action == 1 || action == 2)
-	{
-		reverse(a, b, 1);
-		reverse(a, b, 2);
+		reverse(a);
+		reverse(b);
+		displayAction(3, picker);
 	}
 }
