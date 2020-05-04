@@ -44,7 +44,8 @@ void		push_ab(t_stack **stack_a, t_stack **stack_b, int action, int picker);
 ** Util
 */
 
-int			is_sorted(t_stack **a, t_stack **b, int picker);
+void		is_sorted(t_stack **a, t_stack **b, int picker);
+void		check_sorted(t_stack **a, t_stack **b);
 void		dup_checker(t_stack *stack, int value);
 int			digit_checker(const char *argv);
 void		print_msg(int msg);
@@ -58,8 +59,7 @@ void		sort2(t_stack **a, t_stack **b);
 void		sort3(t_stack **a, t_stack **b);
 void		sort4(t_stack **a, t_stack **b);
 void		sort5(t_stack **a, t_stack **b);
-void		sort20(t_stack **a, t_stack **b, int stack_size);
-void 		sort50(t_stack **a, t_stack **b, int stack_size);
+void 		sort99(t_stack **a, t_stack **b, int stack_size);
 
 /*
 ** Algo assistance functions

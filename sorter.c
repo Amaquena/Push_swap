@@ -12,22 +12,31 @@
 
 #include "push_swap.h"
 
-int			stack_size(t_stack *a)
+void check_sorted(t_stack **stack_a, t_stack **stack_b)
 {
-	int size;
+	t_stack *a;
+	t_stack *b;
 
-	size = 0;
-	while (a)
+	a = (*stack_a);
+	b = (*stack_b);
+	if (!b)
 	{
-		if (a != NULL) {
-		size++;
-		a = a->next;
+		while (a->next)
+		{
+			if (a->elem < a->next->elem)
+				a = a->next;
+			else
+				break ;
+		}
+		if (!(a->next))
+		{
+			pop(stack_a);
+			exit(1);
 		}
 	}
-	return (size);
 }
 
-int			is_sorted(t_stack **stack_a, t_stack **stack_b, int picker)
+void			is_sorted(t_stack **stack_a, t_stack **stack_b, int picker)
 {
 	t_stack *a;
 	t_stack *b;
@@ -77,7 +86,7 @@ void		dup_checker(t_stack *stack, int value)
 int			digit_checker(const char *argv)
 {
 	int i;
-	int value;
+	long value;
 
 	i = 0;
 	while (argv[i])
@@ -86,10 +95,10 @@ int			digit_checker(const char *argv)
 			print_msg(3);
 		i++;
 	}
-	value = ft_atoi(argv);
-	if (value >= 2147483647 || value <= -2147483648)
+	value = ft_atol(argv);
+	if (value >= INT_MAX || value <= INT_MIN)
 		print_msg(3);
-	return value;
+	return ((int)value);
 }
 
 void	print_msg(int msg)

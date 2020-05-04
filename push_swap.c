@@ -25,10 +25,8 @@ static void	sort_the_stack(t_stack **a, t_stack **b)
 		sort4(a, b);
 	else if (total == 5)
 		sort5(a, b);
-	else if (total > 5 && total <= 20)
-		sort20(a, b, total);
-	else if (total > 20 && total <= 100)
-		sort50(a, b, total);
+	else if (total > 5 && total < 100)
+		sort99(a, b, total);
 }
 
 int		main(int ac, char **av)

@@ -14,6 +14,7 @@
 
 void sort2(t_stack **a, t_stack **b)
 {
+	check_sorted(a, b);
 	if ((*a)->elem > (*a)->next->elem)
 		swap_ab(a, b, 1, 2);
 }
@@ -24,6 +25,7 @@ void sort3(t_stack **a, t_stack **b)
 	int p2 = (*a)->next->elem;
 	int p3 = (*a)->next->next->elem;
 
+	check_sorted(a, b);
 	if (p1 < p2 && p1 < p3 && p2 > p3)
 	{
 		reverse_ab(a, b, 1, 2);
@@ -44,7 +46,7 @@ void sort3(t_stack **a, t_stack **b)
 
 void sort4(t_stack **a, t_stack **b)
 {
-
+	check_sorted(a, b);
 	while (1)
 	{
 		if ((*a)->index == 0)
@@ -63,6 +65,7 @@ void sort5(t_stack **a, t_stack **b)
 {
 	int count;
 
+	check_sorted(a, b);
 	count = 0;
 	while (1)
 	{
@@ -84,30 +87,21 @@ void sort5(t_stack **a, t_stack **b)
 	}
 }
 
-void sort20(t_stack **a, t_stack **b, int stack_size)
+void sort99(t_stack **a, t_stack **b, int stack_size)
 {
-	int range;
 	int i;
 	int pos;
 
-	range = 0;
+	check_sorted(a, b);
 	i = 0;
 	pos = 0;
-	while (range < 15)
+	while (*a)
 	{
-		range += 5;
-		while (i < range)
-		{
-			pos = find_largest_pos(*a, (stack_size - i));
-			ra_or_rra(a, b, pos, stack_size, i);
-			push_ab(a, b, 2, 2);
-			i++;
-		}
+		pos = find_smallest_pos(*a, i);
+		ra_or_rra(a, b, pos, stack_size, i);
+		push_ab(a, b, 2, 2);
+		i++;
 	}
-	sort5(a, b);
 	while (*b)
-	{
 		push_ab(a, b, 1, 2);
-		rotate_ab(a, b, 1, 2);
-	}
 }

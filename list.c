@@ -104,3 +104,18 @@ void disp_stack(t_stack *a, t_stack *b)
 	}
 	ft_putchar('\n');
 }
+
+int			stack_size(t_stack *a)
+{
+	int size;
+
+	size = 0;
+	while (a)
+	{
+		if (a != NULL) {
+		size++;
+		a = a->next;
+		}
+	}
+	return (size);
+}

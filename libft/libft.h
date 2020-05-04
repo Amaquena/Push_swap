@@ -111,5 +111,6 @@ int					ft_isspace(char c);
 int					ft_numlen(int c);
 int					get_next_line(const int fd, char **line);
 void				ft_swapany(void *a, void *b, size_t s);
+long				ft_atol(const char *str);
 
 #endif
