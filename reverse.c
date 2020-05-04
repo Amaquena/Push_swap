@@ -58,5 +58,5 @@ void	reverse_ab(t_stack **a, t_stack **b, int action, int picker)
 		reverse(b);
 		displayAction(3, picker);
 	}
-	disp_stack((*a), (*b));
+	// disp_stack((*a), (*b));
 }

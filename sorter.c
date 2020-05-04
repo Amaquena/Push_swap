@@ -46,14 +46,15 @@ int			is_sorted(t_stack **stack_a, t_stack **stack_b, int picker)
 		if (!(a->next))
 		{
 			pop(stack_a);
-			if (picker == 1)
+			if (picker == 1) // change back to 1
 				print_msg(1);
 			exit(1);
 		}
 	}
+	// disp_stack(a, b);
 	pop(stack_a);
 	pop(stack_b);
-	if (picker == 1)
+	if (picker == 1) // change back to 1
 		print_msg(2);
 	exit(1);
 }

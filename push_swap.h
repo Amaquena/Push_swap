@@ -57,9 +57,18 @@ int			stack_size(t_stack *a);
 void		sort2(t_stack **a, t_stack **b);
 void		sort3(t_stack **a, t_stack **b);
 void		sort4(t_stack **a, t_stack **b);
-void		check_args(t_stack **a, t_stack **b);
-int			find_largest(t_stack *a);
-int			find_smallest(t_stack *a, int smallest);
-void		ra_or_rra(t_stack **a, t_stack **b, int pos, int size);
+void		sort5(t_stack **a, t_stack **b);
+void		sort20(t_stack **a, t_stack **b, int stack_size);
+void 		sort50(t_stack **a, t_stack **b, int stack_size);
+
+/*
+** Algo assistance functions
+*/
+
+int			find_largest_pos(t_stack *a, int stack_size);
+int			find_smallest_pos(t_stack *a, int smallest);
+void		ra_or_rra(t_stack **a, t_stack **b, int pos, int size, int range_value);
+void		rb_or_rrb(t_stack **a, t_stack **b, int pos, int range);
+void		pushback_b(t_stack **stack_a, t_stack **stack_b, int i, int range_max);
 
 #endif

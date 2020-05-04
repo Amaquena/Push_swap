@@ -57,5 +57,5 @@ void	swap_ab(t_stack **a, t_stack **b, int action, int picker)
 		if (picker == 2)
 			displayAction(3);
 	}
-	disp_stack((*a), (*b));
+	// disp_stack((*a), (*b));
 }

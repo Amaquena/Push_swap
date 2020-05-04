@@ -12,55 +12,102 @@
 
 #include "push_swap.h"
 
-void	sort2(t_stack **a, t_stack **b)
+void sort2(t_stack **a, t_stack **b)
 {
-		if ((*a)->elem > (*a)->next->elem)
-			swap_ab(a, b, 1, 2);
+	if ((*a)->elem > (*a)->next->elem)
+		swap_ab(a, b, 1, 2);
 }
 
-void	sort3(t_stack **a, t_stack **b)
+void sort3(t_stack **a, t_stack **b)
 {
 	int p1 = (*a)->elem;
 	int p2 = (*a)->next->elem;
 	int p3 = (*a)->next->next->elem;
-	
-	if (p1 > p2 && p1 > p3 && p3 < p2)
+
+	if (p1 < p2 && p1 < p3 && p2 > p3)
 	{
-		swap_ab(a, b, 1, 2);
 		reverse_ab(a, b, 1, 2);
+		swap_ab(a, b, 1, 2);
 	}
-	else if (p1 < p2 && p2 > p3 && p3 > p1)
+	else if (p1 > p2 && p1 < p3 && p2 < p3)
+		swap_ab(a, b, 1, 2);
+	else if (p1 < p2 && p1 > p3 && p2 > p3)
+		reverse_ab(a, b, 1, 2);
+	else if (p1 > p2 && p1 > p3 && p2 < p3)
+		rotate_ab(a, b, 1, 2);
+	else if (p1 > p2 && p1 > p3 && p2 > p3)
 	{
-		swap_ab(a, b, 1, 2);
 		rotate_ab(a, b, 1, 2);
+		swap_ab(a, b, 1, 2);
 	}
-	else if (p1 > p2 && p1 < p3 && p3 > p2)
-		swap_ab(a, b, 1, 2);
-	else if (p1 > p3 && p3 > p2 && p1 > p2)
-		rotate_ab(a, b, 1, 2);
-	else if (p3 < p1 && p3 < p2 && p1 < 2)
-		reverse_ab(a, b, 1, 2);
 }
 
-void	sort4(t_stack **a, t_stack **b)
+void sort4(t_stack **a, t_stack **b)
 {
-	int size;
-	int pos;
-	int i;
 
-	size = stack_size((*a));
-	i = 0;
-	while (i < size - 3)
+	while (1)
 	{
-		pos = find_smallest((*a), (i + 1));
-		ra_or_rra(a, b, pos, size);
-		push_ab(a, b, 2, 2);
-		i++;
+		if ((*a)->index == 0)
+		{
+			push_ab(a, b, 2, 2);
+			break;
+		}
+		else
+			rotate_ab(a, b, 1, 2);
 	}
 	sort3(a, b);
-	while (i > 0)
+	push_ab(a, b, 1, 2);
+}
+
+void sort5(t_stack **a, t_stack **b)
+{
+	int count;
+
+	count = 0;
+	while (1)
+	{
+		if ((*a)->index < 2)
+			push_ab(a, b, 2, 2);
+		else
+			rotate_ab(a, b, 1, 2);
+		if (count == 5)
+			break;
+		count++;
+	}
+	sort3(a, b);
+	if ((*b)->elem < (*b)->next->elem)
+		swap_ab(a, b, 2, 2);
+	while (count > 3)
 	{
 		push_ab(a, b, 1, 2);
-		i--;
+		count--;
+	}
+}
+
+void sort20(t_stack **a, t_stack **b, int stack_size)
+{
+	int range;
+	int i;
+	int pos;
+
+	range = 0;
+	i = 0;
+	pos = 0;
+	while (range < 15)
+	{
+		range += 5;
+		while (i < range)
+		{
+			pos = find_largest_pos(*a, (stack_size - i));
+			ra_or_rra(a, b, pos, stack_size, i);
+			push_ab(a, b, 2, 2);
+			i++;
+		}
+	}
+	sort5(a, b);
+	while (*b)
+	{
+		push_ab(a, b, 1, 2);
+		rotate_ab(a, b, 1, 2);
 	}
 }

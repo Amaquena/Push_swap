@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	check_args(t_stack **a, t_stack **b)
+static void	sort_the_stack(t_stack **a, t_stack **b)
 {
 	int total;
 
@@ -21,8 +21,14 @@ void	check_args(t_stack **a, t_stack **b)
 		sort2(a, b);
 	else if (total == 3)
 		sort3(a, b);
-	else if (total == 4 || total == 5)
+	else if (total == 4)
 		sort4(a, b);
+	else if (total == 5)
+		sort5(a, b);
+	else if (total > 5 && total <= 20)
+		sort20(a, b, total);
+	else if (total > 20 && total <= 100)
+		sort50(a, b, total);
 }
 
 int		main(int ac, char **av)
@@ -38,8 +44,9 @@ int		main(int ac, char **av)
 		while (ac > 0)
 			push(&stack_a, av[ac--]);
 		normalizer(&stack_a);
-		disp_stack(stack_a, stack_b);
-		check_args(&stack_a, &stack_b);
+		// disp_stack(stack_a, stack_b);
+		sort_the_stack(&stack_a, &stack_b);
+		// disp_stack(stack_a, stack_b);
 		is_sorted(&stack_a, &stack_b, 2);
 	}
 	return (0);

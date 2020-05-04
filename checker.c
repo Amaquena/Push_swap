@@ -29,9 +29,9 @@ static void actions(char *line, t_stack **a, t_stack **b)
 	if (ft_strncmp(line, "sa", 2) == 0)
 		swap_ab(a, b, 1, 1);
 	else if (ft_strncmp(line, "sb", 2) == 0)
-		swap_ab(a, b, 1, 1);
+		swap_ab(a, b, 2, 1);
 	else if (ft_strncmp(line, "ss", 2) == 0)
-		swap_ab(a, b, 1, 1);
+		swap_ab(a, b, 3, 1);
 	else if (ft_strncmp(line, "pa", 2) == 0)
 		push_ab(a, b, 1, 1);
 	else if (ft_strncmp(line, "pb", 2) == 0)
@@ -46,16 +46,20 @@ static void actions(char *line, t_stack **a, t_stack **b)
 		print_msg(3);
 }
 
-static void handleInstructions(char **line, t_stack **a, t_stack **b)
+static void handleInstructions(t_stack **a, t_stack **b)
 {
-	while (get_next_line(0, line))
+	char *line;
+
+	while (get_next_line(0, &line))
 	{
-		if (ft_strlen((*line)) == 2)
-			actions((*line), a, b);
-		else if (ft_strlen((*line)) == 3)
-			rev_rot((*line), a, b);
+		if (ft_strlen(line) == 2)
+			actions(line, a, b);
+		else if (ft_strlen(line) == 3)
+			rev_rot(line, a, b);
 		else
 			print_msg(3);
+		// disp_stack((*a), (*b));
+		free(line);
 	}
 }
 
@@ -63,7 +67,6 @@ int main(int ac, char **av)
 {
 	t_stack *stack_a;
 	t_stack *stack_b;
-	char *line;
 
 	if (ac > 1)
 	{
@@ -72,8 +75,8 @@ int main(int ac, char **av)
 		stack_a = NULL;
 		while (ac > 0)
 			push(&stack_a, av[ac--]);
-		// normalizer(&stack_a);
-		handleInstructions(&line, &stack_a, &stack_b);
+		normalizer(&stack_a);
+		handleInstructions(&stack_a, &stack_b);
 	}
 	else if (ac == 1)
 		return (0);

@@ -18,11 +18,12 @@ void push(t_stack **curr, const char *elem)
 	int value;
 
 	value = digit_checker(elem);
+	// ft_putnbr(value);
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
 		return;
 	new->elem = value;
 	new->next = (*curr);
-	new->index = 1; // remove when normalizer fixed
+	new->index = 0; // remove when normalizer fixed
 	(*curr) = new;
 	new = NULL;
 	dup_checker((*curr), value);
@@ -72,19 +73,29 @@ void normalizer(t_stack **a)
 
 void disp_stack(t_stack *a, t_stack *b)
 {
-	static int moves = -1;
+	// static int moves = -1;
 
-	ft_putstr("moves: ");
-	moves++;
-	ft_putnbr(moves);
+	// ft_putstr("moves: ");
+	// moves++;
+	// ft_putnbr(moves);
 	ft_putstr("\nA       B\n");
 	while (a || b)
 	{
 		if (a)
+		{
+			// printf("%d (%d)", a->elem, a->index);
 			ft_putstr(ft_itoa(a->elem));
+			ft_putchar(' ');
+			ft_putstr(ft_itoa(a->index));
+		}
 		ft_putstr("       ");
 		if (b)
+		{
+			// printf("%d (%d)", b->elem, b->index);
 			ft_putstr(ft_itoa(b->elem));
+			ft_putchar(' ');
+			ft_putstr(ft_itoa(b->index));
+		}
 		ft_putchar('\n');
 		if (a)
 			a = a->next;

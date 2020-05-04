@@ -13,7 +13,8 @@
 NAME = push_swap.a
 CHCK = checker
 PUSH = push_swap
-CFILES = swap.c list.c rotate.c reverse.c push.c sorter.c algo.c algo_assist.c
+CFILES = swap.c list.c rotate.c reverse.c push.c \
+			sorter.c algo.c algo_assist.c algo_assist1.c algo1.c
 OFILES = $(CFILES:.c=.o)
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
