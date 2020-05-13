@@ -18,27 +18,15 @@ void push(t_stack **curr, const char *elem)
 	int value;
 
 	value = digit_checker(elem);
-	// ft_putnbr(value);
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
 		return;
 	new->elem = value;
 	new->next = (*curr);
-	new->index = 0; // remove when normalizer fixed
+	new->index = 0;
 	(*curr) = new;
 	new = NULL;
 	dup_checker((*curr), value);
 }
-
-/*
- **void	pop(t_stack **curr)
- **{
- **	t_stack *pop;
- **
- **	pop = (*curr);
- **	(*curr) = (*curr)->next;
- **	free(pop);
- **}
- */
 
 void pop(t_stack **curr)
 {
@@ -78,7 +66,7 @@ void disp_stack(t_stack *a, t_stack *b)
 	// ft_putstr("moves: ");
 	// moves++;
 	// ft_putnbr(moves);
-	ft_putstr("\nA       B\n");
+	ft_putstr("\nA\tB\n");
 	while (a || b)
 	{
 		if (a)
@@ -88,7 +76,7 @@ void disp_stack(t_stack *a, t_stack *b)
 			ft_putchar(' ');
 			ft_putstr(ft_itoa(a->index));
 		}
-		ft_putstr("       ");
+		ft_putstr("\t");
 		if (b)
 		{
 			// printf("%d (%d)", b->elem, b->index);

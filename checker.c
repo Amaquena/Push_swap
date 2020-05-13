@@ -58,7 +58,6 @@ static void handleInstructions(t_stack **a, t_stack **b)
 			rev_rot(line, a, b);
 		else
 			print_msg(3);
-		// disp_stack((*a), (*b));
 		free(line);
 	}
 }

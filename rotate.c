@@ -27,7 +27,6 @@ static void	rotate(t_stack **stack)
 		curr->next = temp;
 		temp->next = NULL;
 	}
-	// is_sorted(a, b);
 }
 
 static void	displayAction(int action, int picker)
@@ -58,5 +57,4 @@ void	rotate_ab(t_stack **a, t_stack **b, int action, int picker)
 		rotate(b);
 		displayAction(3, picker);
 	}
-	// disp_stack((*a), (*b));
 }

@@ -37,7 +37,7 @@ void	rb_or_rrb(t_stack **a, t_stack **b, int pos, int size)
 {
 	if (pos > size / 2)
 	{
-		pos = size - pos;
+		pos = ((size + 1) - pos);
 		while (pos != 0)
 		{
 			reverse_ab(a, b, 2, 2);
@@ -46,7 +46,7 @@ void	rb_or_rrb(t_stack **a, t_stack **b, int pos, int size)
 	}
 	else if (pos <= size / 2)
 	{
-		while (pos != 0)
+		while (pos > 1)
 		{
 			rotate_ab(a, b, 2, 2);
 			pos--;
@@ -54,50 +54,56 @@ void	rb_or_rrb(t_stack **a, t_stack **b, int pos, int size)
 	}
 }
 
-int     find_largest_pos(t_stack *stack, int stack_size)
-{
-    int pos;
-
-    pos = 0;
-    while (stack)
-    {
-        pos++;
-        if (stack->index == (stack_size - 1))
-            break ;
-        stack = stack->next;
-    }
-    return (pos);
-}
-
-int find_smallest_pos(t_stack *stack, int smallest)
-{
-	int pos;
-
-	pos = 0;
-	while (stack)
-	{
-		pos++;
-		if (stack->index == smallest)
-			break;
-		stack = stack->next;
-	}
-	// printf("positions: %d\n", pos);
-	return (pos);
-}
-
-void	pushback_b(t_stack **stack_a, t_stack **stack_b, int i, int range_max)
+void	pushback_b(t_stack **a, t_stack **b, int size)
 {
 	int		pos;
 
-	while (*stack_b)
+	while (*b)
 	{
-		while (i > 0 && i >= range_max - 5)
+		while (size > 0)
 		{
-			pos = find_largest_pos((*stack_b), i);
-			rb_or_rrb(stack_a, stack_b, pos, range_max);
-			push_ab(stack_a, stack_b, 1, 2);
-			i--;
+			pos = find_nth_pos((*b), size -1);
+			rb_or_rrb(a, b, pos, size);
+			push_ab(a, b, 1, 2);
+			size--;
 		}
-		range_max -= 5;
+	}
+}
+
+void	pushback_b_2(t_stack **a, t_stack **b)
+{
+	int highestValue;
+	int secondHighestValue;
+	int highestPos;
+	int secondHighestPos;
+
+	while (*b)
+	{
+		highestValue = find_largest_val(*b);
+		secondHighestValue = find_second_largest(*b, highestValue);
+		highestPos = find_nth_pos(*b, highestValue);
+		secondHighestPos = find_nth_pos(*b, secondHighestValue);
+
+		if (*b && (count_moves(*b, highestPos) < count_moves(*b, secondHighestPos)))
+		{
+			rb_or_rrb(a, b, highestPos, stack_size(*b));
+			push_ab(a, b, 1, 2);
+		}
+		else
+		{
+			if (stack_size(*b) > 2)
+			{
+				rb_or_rrb(a, b, secondHighestPos, stack_size(*b));
+				push_ab(a, b, 1, 2);
+				highestPos = find_nth_pos(*b, highestValue);
+				rb_or_rrb(a, b, highestPos, stack_size(*b));
+				push_ab(a, b, 1, 2);
+				swap_ab(a, b, 1, 2);
+			}
+			else if ((*b)->index != highestValue)
+				swap_ab(a, b, 2, 2);
+			else
+				push_ab(a, b, 1, 2);
+		}
 	}
 }

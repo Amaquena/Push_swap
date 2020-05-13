@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void check_sorted(t_stack **stack_a, t_stack **stack_b)
+int check_sorted(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *a;
 	t_stack *b;
@@ -34,6 +34,7 @@ void check_sorted(t_stack **stack_a, t_stack **stack_b)
 			exit(1);
 		}
 	}
+	return (0);
 }
 
 void			is_sorted(t_stack **stack_a, t_stack **stack_b, int picker)
@@ -55,15 +56,14 @@ void			is_sorted(t_stack **stack_a, t_stack **stack_b, int picker)
 		if (!(a->next))
 		{
 			pop(stack_a);
-			if (picker == 1) // change back to 1
+			if (picker == 1)
 				print_msg(1);
 			exit(1);
 		}
 	}
-	// disp_stack(a, b);
 	pop(stack_a);
 	pop(stack_b);
-	if (picker == 1) // change back to 1
+	if (picker == 1)
 		print_msg(2);
 	exit(1);
 }

@@ -27,6 +27,11 @@ static void	sort_the_stack(t_stack **a, t_stack **b)
 		sort5(a, b);
 	else if (total > 5 && total < 100)
 		sort99(a, b, total);
+	else if (total >= 100 && total < 500)
+		sort100(a, b);
+	else if (total >= 500)
+		sort500(a, b);
+	
 }
 
 int		main(int ac, char **av)
@@ -42,9 +47,8 @@ int		main(int ac, char **av)
 		while (ac > 0)
 			push(&stack_a, av[ac--]);
 		normalizer(&stack_a);
-		// disp_stack(stack_a, stack_b);
+		check_sorted(&stack_a, &stack_b);
 		sort_the_stack(&stack_a, &stack_b);
-		// disp_stack(stack_a, stack_b);
 		is_sorted(&stack_a, &stack_b, 2);
 	}
 	return (0);

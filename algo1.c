@@ -1,19 +1,53 @@
 #include "push_swap.h"
 
-void sort50(t_stack **a, t_stack **b, int stack_size)
+void sort100(t_stack **a, t_stack **b)
 {
-	int i;
-	int pos;
+	int currentIndexValue;
+	int range;
 
-	i = 0;
-	pos = 0;
+	currentIndexValue = 0;
+	range = 0;
 	while (*a)
 	{
-		pos = find_smallest_pos(*a, i);
-		ra_or_rra(a, b, pos, stack_size, i);
-		push_ab(a, b, 2, 2);
-		i++;
+		range += 20;
+		while (currentIndexValue <= range)
+		{
+			if (!(*a))
+				break;
+			if ((*a)->index <= range)
+			{
+				currentIndexValue++;
+				push_ab(a, b, 2, 2);
+			}
+			else
+				rotate_ab(a, b, 1, 2);
+		}
 	}
-	while (*b)
-		push_ab(a, b, 1, 2);
+	pushback_b(a, b, currentIndexValue);
+}
+
+void sort500(t_stack **a, t_stack **b)
+{
+	int range;
+	int rangeCounter;
+
+	range = 0;
+	rangeCounter = 0;
+	while (*a)
+	{
+		range += 50;
+		while (rangeCounter <= range)
+		{
+			if (!(*a))
+				break;
+			if ((*a)->index <= range)
+			{
+				rangeCounter++;
+				push_ab(a, b, 2, 2);
+			}
+			else
+				rotate_ab(a, b, 1, 2);
+		}
+	}
+	pushback_b_2(a, b);
 }

@@ -23,7 +23,6 @@ static void	swap(t_stack **stack)
 		temp->next = (*stack)->next;
 		(*stack)->next = temp;
 	}
-	// is_sorted((*a), (*b));
 }
 
 static void	displayAction(int action)
@@ -57,5 +56,4 @@ void	swap_ab(t_stack **a, t_stack **b, int action, int picker)
 		if (picker == 2)
 			displayAction(3);
 	}
-	// disp_stack((*a), (*b));
 }

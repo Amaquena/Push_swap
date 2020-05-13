@@ -27,7 +27,6 @@ static void	reverse(t_stack **stack)
 		temp->next = (*stack);
 		(*stack) = temp;
 	}
-	// is_sorted(a, b);
 }
 
 static void	displayAction(int action, int picker)
@@ -58,5 +57,4 @@ void	reverse_ab(t_stack **a, t_stack **b, int action, int picker)
 		reverse(b);
 		displayAction(3, picker);
 	}
-	// disp_stack((*a), (*b));
 }
