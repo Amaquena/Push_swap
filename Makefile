@@ -49,17 +49,12 @@ $(CHCK):  $(NAME)
 $(PUSH):  $(NAME)
 	$(CC) $(FLAGS) $(PUSH).c $(NAME) $(LIBFT) -o $(PUSH)
 	@echo "______________________________________________________________________\n"
-cgcc: re
-	$(CC) -g $(FLAGS) checker.c $(CFILES) $(LIBFT) -o checker
-	@echo "______________________________________________________________________\n"
-pgcc: re
-	$(CC) -g $(FLAGS) push_swap.c $(CFILES) $(LIBFT) -o push_swap
-	@echo "______________________________________________________________________\n"
-run: fclean $(PUSH)
-	./push_swap 4 3 5 1 2
 
-cmain:
-	rm -f main
 
-main: cmain
-	$(CC) $(FLAGS) main.c $(LIBFT) -o main
+# Used to compile for usding gdb debugger
+# cgcc: re
+# 	$(CC) -g $(FLAGS) checker.c $(CFILES) $(LIBFT) -o checker
+# 	@echo "______________________________________________________________________\n"
+# pgcc: re
+# 	$(CC) -g $(FLAGS) push_swap.c $(CFILES) $(LIBFT) -o push_swap
+# 	@echo "______________________________________________________________________\n"
