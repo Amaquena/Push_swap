@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# all credit for the creation of this piece of code goes too VBrazhnik,
+# You can find it on his github at
+# https://github.com/VBrazhnik/Push_swap/blob/master/benchmark.sh
+
 MAX=0
 ITERATIONS=0
 LIMIT=1
